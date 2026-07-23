@@ -1,0 +1,47 @@
+/*-----------------------------------*\
+  #RESET
+\*-----------------------------------*/
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*-----------------------------------*\
+  #CUSTOM PROPERTIES
+\*-----------------------------------*/
+
+:root {
+  /* Colors */
+
+  --bg-primary: #1e1e1f;
+  --text-primary: #fafafa;
+  --color-accent: #ffdb70;
+
+  /* Typography */
+
+  --ff-poppins: "Poppins", sans-serif;
+
+  --fs-body: 16px;
+
+  --fw-normal: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+}
+
+/*-----------------------------------*\
+  #BASE
+\*-----------------------------------*/
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+
+  font-family: var(--ff-poppins);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-normal);
+  line-height: 1.6;
+}
