@@ -10,26 +10,65 @@
   box-sizing: border-box;
 }
 
+ul {
+  list-style: none;
+}
+
 /*-----------------------------------*\
   #CUSTOM PROPERTIES
 \*-----------------------------------*/
 
 :root {
-  /* Colors */
+  /* COLORS */
 
-  --bg-primary: #1e1e1f;
-  --text-primary: #fafafa;
-  --color-accent: #ffdb70;
+  --orange-yellow-crayola: hsl(45, 100%, 72%);
+  --vegas-gold: hsl(45, 54%, 58%);
+  --smoky-black: hsl(0, 0%, 7%);
+  --eerie-black-1: hsl(240, 2%, 13%);
+  --eerie-black-2: hsl(240, 2%, 12%);
+  --jet: hsl(0, 0%, 22%);
+  --onyx: hsl(240, 1%, 17%);
+  --light-gray: hsl(0, 0%, 84%);
+  --light-gray-70: hsla(0, 0%, 84%, 0.7);
+  --white-1: hsl(0, 0%, 100%);
+  --white-2: hsl(0, 0%, 98%);
 
-  /* Typography */
+  /* Gradient */
+
+  --bg-gradient-onyx: linear-gradient(
+    to bottom right,
+    hsl(240, 1%, 25%) 3%,
+    hsl(0, 0%, 19%) 97%
+  );
+
+  --border-gradient-onyx: linear-gradient(
+    to bottom right,
+    hsl(0, 0%, 25%) 0%,
+    hsla(0, 0%, 25%, 0) 50%
+  );
+
+  /* Shadow */
+
+  --shadow-1: -4px 8px 24px hsla(0, 0%, 0%, 0.25);
+  --shadow-2: 0 16px 30px hsla(0, 0%, 0%, 0.25);
+
+  /* Font */
 
   --ff-poppins: "Poppins", sans-serif;
 
-  --fs-body: 16px;
+  --fs-1: 24px;
+  --fs-2: 22px;
+  --fs-3: 20px;
+  --fs-4: 18px;
+  --fs-5: 16px;
+  --fs-6: 15px;
+  --fs-7: 14px;
+  --fs-8: 13px;
 
-  --fw-normal: 400;
-  --fw-medium: 500;
-  --fw-bold: 700;
+  --fw-300: 300;
+  --fw-400: 400;
+  --fw-500: 500;
+  --fw-600: 600;
 }
 
 /*-----------------------------------*\
@@ -37,11 +76,260 @@
 \*-----------------------------------*/
 
 body {
-  background: var(--bg-primary);
-  color: var(--text-primary);
+  background: var(--smoky-black);
+  color: var(--white-2);
 
   font-family: var(--ff-poppins);
-  font-size: var(--fs-body);
-  font-weight: var(--fw-normal);
-  line-height: 1.6;
+  font-size: var(--fs-6);
+  font-weight: var(--fw-400);
+  /* line-height: 1.6; */
+}
+
+/*-----------------------------------*\
+  #MAIN LAYOUT
+\*-----------------------------------*/
+
+.main {
+  /* border: 2px solid white; */
+  display: grid;
+  grid-template-columns: 308px 1fr;
+  gap: 30px;
+
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+/*===================================
+        SIDEBAR
+===================================*/
+
+.sidebar {
+  position: sticky;
+  top: 600px;
+  border: 1px solid var(--jet);
+  height: max-content;
+  background: var(--eerie-black-2);
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  /* border: 2px solid yellow; */
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: var(--shadow-2);
+}
+
+/*===================================
+        BUTTON
+===================================*/
+
+.info-more-btn {
+  margin: 0px;
+  background: transparent;
+  border: 1px solid var(--orange-yellow-crayola);
+  color: var(--orange-yellow-crayola);
+  padding: 12px 18px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-self: end;
+  gap: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  display: none;
+}
+
+.info-btn:hover {
+  background: var(--orange-yellow-crayola);
+  color: var(--smoky-black);
+}
+
+/*===================================
+        TOP SECTION
+===================================*/
+
+.sidebar-top-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0px;
+  text-align: center;
+}
+
+.avatar-box {
+  width: 140px;
+  height: 180px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--bg-gradient-onyx);
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.avatar-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.display-content {
+  margin: 0;
+}
+
+.name {
+  color: var(--white-2);
+  font-size: 1.6rem;
+  font-weight: var(--fw-600);
+  margin-bottom: 12px;
+}
+
+.title {
+  display: inline-block;
+  background: var(--onyx);
+  color: var(--white-2);
+  padding: 8px 18px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}
+
+/*===================================
+        DIVIDER
+===================================*/
+
+.separator {
+  width: 100%;
+  height: 1px;
+  background: var(--jet);
+  /* margin: 30px 0; */
+}
+
+/*===================================
+        CONTACTS
+===================================*/
+
+.contacts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-item {
+  display: flex;
+  /* align-items: center; */
+  gap: 10px;
+}
+
+.icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--bg-gradient-onyx);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--orange-yellow-crayola);
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.contact-info {
+  /* display: flex;
+  flex-direction: column; */
+  flex: 1;
+  min-width: 0;
+}
+
+.contact-title {
+  color: var(--light-gray-70);
+  font-size: var(--fs-8);
+  margin-bottom: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.contact-link,
+.contact-info time,
+.contact-info address {
+  color: var(--white-2);
+  font-size: var(--fs-7);
+  text-decoration: none;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.contact-info address {
+  font-style: normal;
+}
+
+/*===================================
+        SOCIAL
+===================================*/
+
+.social-list {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  /* margin-bottom: 30px; */
+}
+
+.social-link {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: var(--bg-gradient-onyx);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--light-gray);
+  font-size: 22px;
+  transition: 0.3s;
+}
+
+.social-link:hover {
+  color: var(--orange-yellow-crayola);
+  transform: translateY(-4px);
+}
+
+/*===================================
+        Resume Download
+===================================*/
+
+.resume-down {
+  /* border: 2px solid white; */
+  border-radius: 14px;
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 8px 12px;
+  background: var(--bg-gradient-onyx);
+  transition: 0.3s;
+}
+
+.resume-btn {
+  text-decoration: none;
+  color: var(--light-gray);
+  transition: 0.3s;
+}
+
+.resume-down:hover {
+  transform: translateY(-4px);
+}
+
+.resume-btn:hover {
+  color: var(--orange-yellow-crayola);
+}
+
+/*
+  Coming Soon
+*/
+
+.main-content {
+  background: var(--eerie-black-2);
+  border: 1px solid var(--jet);
+  /* border: 2px solid yellow; */
+  border-radius: 20px;
+  min-height: 100vh;
+  box-shadow: var(--shadow-1);
 }
