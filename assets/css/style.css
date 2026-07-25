@@ -19,8 +19,6 @@ ul {
 \*-----------------------------------*/
 
 :root {
-  /* COLORS */
-
   --orange-yellow-crayola: hsl(45, 100%, 72%);
   --vegas-gold: hsl(45, 54%, 58%);
   --smoky-black: hsl(0, 0%, 7%);
@@ -33,29 +31,21 @@ ul {
   --white-1: hsl(0, 0%, 100%);
   --white-2: hsl(0, 0%, 98%);
 
-  /* Gradient */
-
   --bg-gradient-onyx: linear-gradient(
     to bottom right,
     hsl(240, 1%, 25%) 3%,
     hsl(0, 0%, 19%) 97%
   );
-
   --border-gradient-onyx: linear-gradient(
     to bottom right,
     hsl(0, 0%, 25%) 0%,
     hsla(0, 0%, 25%, 0) 50%
   );
 
-  /* Shadow */
-
   --shadow-1: -4px 8px 24px hsla(0, 0%, 0%, 0.25);
   --shadow-2: 0 16px 30px hsla(0, 0%, 0%, 0.25);
 
-  /* Font */
-
   --ff-poppins: "Poppins", sans-serif;
-
   --fs-1: 24px;
   --fs-2: 22px;
   --fs-3: 20px;
@@ -78,49 +68,45 @@ ul {
 body {
   background: var(--smoky-black);
   color: var(--white-2);
-
   font-family: var(--ff-poppins);
   font-size: var(--fs-6);
   font-weight: var(--fw-400);
-  /* line-height: 1.6; */
 }
 
 /*-----------------------------------*\
-  #MAIN LAYOUT
+  #MAIN LAYOUT (Original Desktop)
 \*-----------------------------------*/
 
 .main {
-  /* border: 2px solid white; */
   display: grid;
   grid-template-columns: 308px 1fr;
   gap: 30px;
-
   max-width: 1200px;
   margin: 60px auto;
   padding: 0 20px;
 }
 
 /*===================================
-        SIDEBAR
+        SIDEBAR (Original Desktop)
 ===================================*/
 
 .sidebar {
   position: sticky;
-  top: 600px;
+  top: 60px;
+  align-self: start;
   border: 1px solid var(--jet);
   height: max-content;
   background: var(--eerie-black-2);
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  /* border: 2px solid yellow; */
+  /* gap: 30px; */
   border-radius: 20px;
   padding: 30px;
   box-shadow: var(--shadow-2);
 }
 
 /*===================================
-        BUTTON
+        BUTTON (Original Desktop)
 ===================================*/
 
 .info-more-btn {
@@ -139,13 +125,13 @@ body {
   display: none;
 }
 
-.info-btn:hover {
+.info-more-btn:hover {
   background: var(--orange-yellow-crayola);
   color: var(--smoky-black);
 }
 
 /*===================================
-        TOP SECTION
+        TOP SECTION (Original Desktop)
 ===================================*/
 
 .sidebar-top-info {
@@ -201,7 +187,17 @@ body {
   width: 100%;
   height: 1px;
   background: var(--jet);
-  /* margin: 30px 0; */
+  /* margin-top: 25px; */
+}
+
+/*===================================
+        Sidebar-info-more
+===================================*/
+.sidebar-info-more {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 25px;
 }
 
 /*===================================
@@ -216,8 +212,8 @@ body {
 
 .contact-item {
   display: flex;
-  /* align-items: center; */
   gap: 10px;
+  min-width: 0;
 }
 
 .icon-box {
@@ -234,8 +230,6 @@ body {
 }
 
 .contact-info {
-  /* display: flex;
-  flex-direction: column; */
   flex: 1;
   min-width: 0;
 }
@@ -265,14 +259,13 @@ body {
 }
 
 /*===================================
-        SOCIAL
+        SOCIAL & RESUME
 ===================================*/
 
 .social-list {
   display: flex;
   justify-content: center;
   gap: 18px;
-  /* margin-bottom: 30px; */
 }
 
 .social-link {
@@ -293,12 +286,7 @@ body {
   transform: translateY(-4px);
 }
 
-/*===================================
-        Resume Download
-===================================*/
-
 .resume-down {
-  /* border: 2px solid white; */
   border-radius: 14px;
   text-align: center;
   font-size: 1.2rem;
@@ -321,15 +309,175 @@ body {
   color: var(--orange-yellow-crayola);
 }
 
-/*
-  Coming Soon
-*/
-
 .main-content {
   background: var(--eerie-black-2);
   border: 1px solid var(--jet);
-  /* border: 2px solid yellow; */
   border-radius: 20px;
   min-height: 100vh;
   box-shadow: var(--shadow-1);
+}
+
+/*===================================
+        RESPONSIVE DESIGN
+===================================*/
+
+/*--- ALL SCREENS UNDER 1024px (Tablet & Mobile Unified) ---*/
+@media (max-width: 1024px) {
+  .main {
+    grid-template-columns: 1fr;
+    margin: 0px auto;
+    gap: 85px;
+  }
+
+  .sidebar {
+    position: relative;
+    width: 100%;
+    /* height: max-content; */
+    /* padding: 20px; */
+    overflow: hidden;
+    /* Ensures nothing spills out */
+  }
+
+  /* The Hidden Contact Area */
+  .sidebar-info-more {
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+
+    margin: 0;
+    padding: 0;
+    transition:
+      max-height 0.4s ease-in-out,
+      opacity 0.4s ease-in-out,
+      visibility 0.4s ease-in-out;
+  }
+
+  /* When JS adds the active class */
+  .sidebar.active .sidebar-info-more {
+    max-height: 1000px;
+    opacity: 1;
+    visibility: visible;
+    padding-top: 25px;
+  }
+
+  /* The Button */
+  .info-more-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 0 20px 0 20px;
+    padding: 10px 18px;
+    background: linear-gradient(
+      135deg,
+      hsla(45, 100%, 72%, 0.2) 0%,
+      hsla(45, 100%, 72%, 0) 50%
+    );
+    border: none;
+    border-bottom: 1px solid var(--orange-yellow-crayola);
+    border-left: 1px solid var(--orange-yellow-crayola);
+    color: var(--orange-yellow-crayola);
+    font-size: 13px;
+    z-index: 999;
+    cursor: pointer;
+  }
+
+  .info-more-btn span {
+    display: block;
+  }
+
+  .info-more-btn ion-icon {
+    transition: transform 0.3s ease;
+  }
+  .sidebar.active .info-more-btn ion-icon {
+    transform: rotate(180deg);
+  }
+
+  /* Layout for the Top Profile Area */
+  .sidebar-top-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: left;
+    gap: 15px;
+    width: calc(100% - 130px); /* Keeps text clear of the button */
+  }
+
+  .avatar-box {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 0;
+    border-radius: 16px;
+    flex-shrink: 0;
+  }
+
+  .name {
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .title {
+    display: inline-block;
+  }
+
+  /* Keep contacts in 2 columns just like the tablet */
+  .contacts-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+  }
+}
+
+/*--- MEDIUM MOBILE (Under 580px) ---*/
+@media (max-width: 580px) {
+  .contacts-list {
+    grid-template-columns: 1fr; /* Stack contacts to one column */
+  }
+  .info-more-btn span {
+    display: none;
+  }
+}
+
+/*--- TINY MOBILE (Under 380px) - FIXES THE TEXT WRAPPING ---*/
+@media (max-width: 380px) {
+  /* Hide the "Show Contacts" text to free up 80px of space */
+  .info-more-btn span {
+    display: none;
+  }
+
+  .info-more-btn {
+    /* height: 22px;
+    width: 45px; */
+    padding: 10px 15px;
+    border-radius: 0 20px 0 16px;
+  }
+
+  /* Expand the text area now that the button is smaller */
+  .sidebar-top-info {
+    width: calc(100% - 50px);
+    gap: 10px;
+  }
+
+  /* Shrink avatar to save physical space */
+  .avatar-box {
+    width: 60px;
+    height: 60px;
+  }
+
+  /* Shrink font slightly to ensure it fits on one line */
+  .name {
+    font-size: 1.05rem;
+  }
+
+  .title {
+    font-size: 0.65rem;
+    padding: 3px 10px;
+  }
 }
