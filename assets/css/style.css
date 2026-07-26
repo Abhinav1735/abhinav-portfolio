@@ -92,7 +92,7 @@ body {
 
 .sidebar {
   position: sticky;
-  top: 60px;
+  top: 30px;
   align-self: start;
   border: 1px solid var(--jet);
   height: max-content;
@@ -157,6 +157,11 @@ body {
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: 0.4s;
+}
+
+.avatar-box:hover img {
+  transform: scale(1.05);
 }
 
 .display-content {
@@ -214,6 +219,11 @@ body {
   display: flex;
   gap: 10px;
   min-width: 0;
+  transition: 0.3s;
+}
+
+.contact-item:hover {
+  transform: translateX(5px);
 }
 
 .icon-box {
@@ -283,7 +293,7 @@ body {
 
 .social-link:hover {
   color: var(--orange-yellow-crayola);
-  transform: translateY(-4px);
+  transform: translateY(-5px) scale(1.08);
 }
 
 .resume-down {
@@ -296,6 +306,10 @@ body {
 }
 
 .resume-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
   text-decoration: none;
   color: var(--light-gray);
   transition: 0.3s;
@@ -309,12 +323,210 @@ body {
   color: var(--orange-yellow-crayola);
 }
 
+/*===================================
+        Hero-Section // Main
+===================================*/
+
 .main-content {
+  position: relative;
   background: var(--eerie-black-2);
   border: 1px solid var(--jet);
   border-radius: 20px;
   min-height: 100vh;
   box-shadow: var(--shadow-1);
+  overflow: visible;
+}
+
+/*===================================
+        NAVMENU BUTTON
+===================================*/
+.nav-more-btn {
+  display: none;
+}
+
+/*===================================
+        NAVBAR
+===================================*/
+
+.navbar {
+  position: absolute;
+  bottom: auto;
+  top: 0;
+  left: auto;
+  right: 0;
+  width: max-content;
+  height: 55px;
+  border-radius: 0 20px;
+  padding: 12px 15px;
+  box-shadow: var(--shadow-1);
+
+  background: var(--eerie-black-2);
+
+  border-left: 1px solid var(--jet);
+  border-bottom: 1px solid var(--jet);
+  z-index: 999;
+}
+
+.navbar-list {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.navbar-link {
+  position: relative;
+
+  border: none;
+  background: none;
+
+  color: var(--light-gray);
+
+  font-size: 15px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  height: 30px;
+  padding: 10px 0px;
+
+  border-radius: 8px;
+
+  display: flex;
+  align-items: center;
+
+  transition: 0.3s;
+}
+
+.navbar-item {
+  display: flex;
+
+  align-items: center;
+}
+/*
+.navbar-item:hover {
+  background: var(--orange-yellow-crayola);
+} */
+
+.navbar-link:hover,
+.navbar-link.active {
+  color: var(--orange-yellow-crayola);
+}
+
+.navbar-link::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: -4px;
+
+  transform: translateX(-50%);
+
+  width: 0;
+  height: 3px;
+
+  background: var(--orange-yellow-crayola);
+
+  border-radius: 20px;
+
+  transition: 0.3s;
+}
+
+.navbar-link:hover::after,
+.navbar-link.active::after {
+  width: 100%;
+}
+
+/*===================================
+        ARTICLE
+===================================*/
+
+article {
+  padding: 25px 35px 35px;
+}
+
+/*===================================
+        ARTICLE TITLE
+===================================*/
+
+.article-title {
+  position: relative;
+  font-size: 2rem;
+  margin-bottom: 35px;
+}
+
+.article-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+
+  width: 60px;
+  height: 5px;
+
+  border-radius: 10px;
+  background: var(--orange-yellow-crayola);
+}
+
+/*===================================
+        ABOUT TEXT
+===================================*/
+
+.about-text {
+  color: var(--light-gray);
+  line-height: 1.8;
+  /* margin-bottom: 50px; */
+}
+
+.about-text p:not(:last-child) {
+  margin-bottom: 18px;
+}
+
+/*===================================
+        SERVICES
+===================================*/
+
+.service-title {
+  font-size: 1.5rem;
+  margin-bottom: 25px;
+}
+
+.service-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.service-card {
+  display: flex;
+  gap: 20px;
+
+  background: var(--bg-gradient-onyx);
+
+  border: 1px solid var(--jet);
+
+  border-radius: 18px;
+
+  padding: 25px;
+
+  transition: 0.3s;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+}
+
+.service-icon {
+  font-size: 2rem;
+}
+
+.service-card h4 {
+  margin-bottom: 8px;
+}
+
+.service-card p {
+  color: var(--light-gray);
+  line-height: 1.6;
 }
 
 /*===================================
@@ -322,11 +534,11 @@ body {
 ===================================*/
 
 /*--- ALL SCREENS UNDER 1024px (Tablet & Mobile Unified) ---*/
-@media (max-width: 1024px) {
+@media (max-width: 1080px) {
   .main {
     grid-template-columns: 1fr;
     margin: 0px auto;
-    gap: 85px;
+    gap: 60px;
   }
 
   .sidebar {
@@ -433,6 +645,100 @@ body {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 15px;
   }
+  /* navbar respondive ---------------------------------------------------------------------- */
+  /* navbar more button  ---------------------------------------------------------------------- */
+  .navbar {
+    position: absolute;
+
+    top: 35px;
+    right: 0;
+
+    width: 100%;
+    height: auto;
+    padding: 0;
+
+    background: var(--eerie-black-2);
+
+    border: 1px solid var(--jet);
+
+    border-radius: 0 0 18px 18px;
+
+    box-shadow: var(--shadow-2);
+
+    max-height: 0;
+    opacity: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    transition: 0.35s ease;
+  }
+
+  /* .navbar.active {
+    max-height: 500px;
+
+    opacity: 1;
+
+    pointer-events: auto;
+  } */
+  .nav-more-btn ion-icon {
+    transition: 0.3s ease;
+  }
+
+  .nav-more-btn.active ion-icon {
+    transform: rotate(180deg);
+  }
+  /* navbar respondive ---------------------------------------------------------------------- */
+
+  .navbar.active {
+    max-height: 400px;
+
+    opacity: 1;
+
+    pointer-events: auto;
+  }
+
+  .navbar-list {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 0;
+
+    width: 100%;
+  }
+
+  .navbar-item {
+    width: 100%;
+  }
+
+  .navbar-link {
+    width: 100%;
+
+    padding: 14px 20px;
+
+    justify-content: flex-start;
+
+    font-size: 15px;
+
+    white-space: nowrap;
+  }
+
+  .navbar-link::after {
+    display: none;
+  }
+
+  /*--- About -------------------------------------------------------------------------------------------------------- ---*/
+  article {
+    padding-bottom: 90px;
+  }
+
+  .service-list {
+    grid-template-columns: 1fr;
+  }
 }
 
 /*--- MEDIUM MOBILE (Under 580px) ---*/
@@ -479,5 +785,27 @@ body {
   .title {
     font-size: 0.65rem;
     padding: 3px 10px;
+  }
+
+  /* --------------------------------------- nav bar -------------------------------------------- */
+
+  .navbar {
+    width: 100%;
+
+    padding: 10px 12px;
+  }
+
+  .navbar-list {
+    overflow-x: auto;
+
+    gap: 18px;
+
+    justify-content: flex-start;
+
+    scrollbar-width: none;
+  }
+
+  .navbar-list::-webkit-scrollbar {
+    display: none;
   }
 }

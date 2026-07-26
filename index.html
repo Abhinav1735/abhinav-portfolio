@@ -156,9 +156,122 @@
           MAIN CONTENT
     ========================= -->
       <div class="main-content">
-        <nav class="navbar"></nav>
+        <!-- Mobile Menu Button -->
+        <button class="info-more-btn nav-more-btn" data-nav-btn>
+          <span>Explore My Portfolio </span>
 
-        <article class="about active"></article>
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+        <!-- navbar Menu Button -->
+        <nav class="navbar" data-navbar>
+          <ul class="navbar-list">
+            <li class="navbar-item">
+              <button class="navbar-link active" data-nav-link>About</button>
+            </li>
+
+            <li class="navbar-item">
+              <button class="navbar-link" data-nav-link>Skills</button>
+            </li>
+
+            <li class="navbar-item">
+              <button class="navbar-link" data-nav-link>Projects</button>
+            </li>
+
+            <li class="navbar-item">
+              <button class="navbar-link" data-nav-link>Certifications</button>
+            </li>
+
+            <li class="navbar-item">
+              <button class="navbar-link" data-nav-link>Resume</button>
+            </li>
+
+            <li class="navbar-item">
+              <button class="navbar-link" data-nav-link>Contact</button>
+            </li>
+          </ul>
+        </nav>
+
+        <article class="about active" data-page="about">
+          <!-- ABOUT TITLE -->
+
+          <header>
+            <h2 class="article-title">About Me</h2>
+          </header>
+
+          <!-- INTRODUCTION -->
+
+          <section class="about-text">
+            <p>Hello! I'm <strong>Abhinav Kumawat</strong>.</p>
+
+            <p>
+              I am currently pursuing my Master of Computer Applications (MCA)
+              in Cloud Computing and Full Stack Development. I have a strong
+              passion for Java development, responsive web design, and building
+              scalable applications.
+            </p>
+
+            <p>
+              I enjoy turning ideas into real-world projects while continuously
+              improving my programming and problem-solving skills.
+            </p>
+          </section>
+
+          <!-- SERVICES -->
+
+          <section class="service">
+            <h3 class="service-title">What I'm Doing</h3>
+
+            <div class="service-list">
+              <div class="service-card">
+                <div class="service-icon">🌐</div>
+
+                <div>
+                  <h4>Web Development</h4>
+
+                  <p>
+                    Building responsive websites using HTML, CSS and JavaScript.
+                  </p>
+                </div>
+              </div>
+
+              <div class="service-card">
+                <div class="service-icon">☕</div>
+
+                <div>
+                  <h4>Java Development</h4>
+
+                  <p>
+                    Developing backend applications using Java and
+                    object-oriented programming.
+                  </p>
+                </div>
+              </div>
+
+              <div class="service-card">
+                <div class="service-icon">🗄</div>
+
+                <div>
+                  <h4>Database Design</h4>
+
+                  <p>Designing relational databases using MySQL and SQL.</p>
+                </div>
+              </div>
+
+              <div class="service-card">
+                <div class="service-icon">📱</div>
+
+                <div>
+                  <h4>Responsive UI</h4>
+
+                  <p>
+                    Creating modern interfaces that work beautifully on every
+                    device.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </article>
       </div>
     </main>
 
