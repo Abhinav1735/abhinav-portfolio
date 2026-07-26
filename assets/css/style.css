@@ -333,6 +333,7 @@ body {
   border: 1px solid var(--jet);
   border-radius: 20px;
   min-height: 100vh;
+  height: auto;
   box-shadow: var(--shadow-1);
   overflow: visible;
 }
@@ -473,18 +474,90 @@ article {
 ===================================*/
 
 .about-text {
+  max-width: 760px;
+
   color: var(--light-gray);
-  line-height: 1.8;
-  /* margin-bottom: 50px; */
+
+  line-height: 1.9;
+
+  margin-bottom: 35px;
 }
 
-.about-text p:not(:last-child) {
-  margin-bottom: 18px;
+.about-text p {
+  margin-bottom: 22px;
+
+  font-size: var(--fs-6);
+}
+
+.about-text strong {
+  color: var(--white-2);
+
+  font-weight: var(--fw-600);
+}
+
+/*===================================
+        QUICK INFO
+===================================*/
+
+.quick-info {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 15px;
+
+  margin-bottom: 35px;
+}
+
+.info-box {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 15px 18px;
+
+  border: 1px solid var(--jet);
+
+  border-radius: 16px;
+
+  background: var(--bg-gradient-onyx);
+
+  transition: 0.3s ease;
+}
+
+.info-box:hover {
+  transform: translateY(-4px);
+
+  border-color: var(--orange-yellow-crayola);
+}
+
+.info-box ion-icon {
+  color: var(--orange-yellow-crayola);
+
+  font-size: 24px;
+}
+
+.info-box span {
+  font-size: var(--fs-7);
+
+  font-weight: var(--fw-500);
+}
+
+@media (max-width: 768px) {
+  .quick-info {
+    grid-template-columns: 1fr;
+  }
 }
 
 /*===================================
         SERVICES
 ===================================*/
+
+.service {
+  margin-top: 0px;
+}
 
 .service-title {
   font-size: 1.5rem;
@@ -697,6 +770,7 @@ article {
     opacity: 1;
 
     pointer-events: auto;
+    box-shadow: 0px 12px 5px rgb(0, 0, 0);
   }
 
   .navbar-list {
@@ -733,7 +807,7 @@ article {
 
   /*--- About -------------------------------------------------------------------------------------------------------- ---*/
   article {
-    padding-bottom: 90px;
+    padding-bottom: 50px;
   }
 
   .service-list {
