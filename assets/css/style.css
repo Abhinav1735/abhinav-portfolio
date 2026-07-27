@@ -346,8 +346,9 @@ body {
   background: var(--eerie-black-2);
   border: 1px solid var(--jet);
   border-radius: 20px;
-  min-height: 100vh;
-  height: auto;
+
+  height: fit-content;
+
   box-shadow: var(--shadow-1);
   overflow: visible;
 }
@@ -787,6 +788,261 @@ article {
 }
 
 /*===================================
+            SKILLS
+===================================*/
+
+.skills-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.skill-category {
+  background: var(--eerie-black-2);
+  border: 1px solid var(--jet);
+  border-radius: 20px;
+  padding: 25px;
+  transition: 0.3s ease;
+}
+
+.skill-category:hover {
+  transform: translateY(-6px);
+  border-color: var(--orange-yellow-crayola);
+  box-shadow: 0 10px 30px rgba(255, 193, 7, 0.08);
+}
+
+.skill-category h3 {
+  color: var(--white-2);
+  margin-bottom: 25px;
+  font-size: var(--fs-5);
+}
+
+.skill {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.skill span {
+  color: var(--light-gray);
+  font-size: var(--fs-7);
+  font-weight: var(--fw-500);
+}
+
+.progress {
+  width: 100%;
+  height: 8px;
+  background: var(--jet);
+  border-radius: 50px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    var(--orange-yellow-crayola),
+    var(--vegas-gold)
+  );
+  transition: width 1.5s ease;
+}
+
+/*===================================
+            PROJECTS Section
+===================================*/
+
+/* ---------- Filter Buttons ---------- */
+
+.project-filter {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 35px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 10px 22px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+
+  background: var(--onyx);
+  color: var(--light-gray);
+
+  transition: 0.3s;
+}
+
+.filter-btn:hover {
+  background: var(--orange-yellow-crayola);
+  color: var(--smoky-black);
+}
+
+.filter-btn.active {
+  background: var(--orange-yellow-crayola);
+  color: var(--smoky-black);
+}
+
+/* ---------- Projects Grid ---------- */
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+/* ---------- Project Card ---------- */
+
+.project-card {
+  background: var(--eerie-black-2);
+  border: 1px solid var(--jet);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: 0.35s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--orange-yellow-crayola);
+  box-shadow: 0 15px 35px rgba(255, 193, 7, 0.12);
+}
+
+/* ---------- Image ---------- */
+
+.project-image {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.1) rotate(1deg);
+}
+
+/* ---------- Overlay ---------- */
+
+.project-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(16, 16, 16, 0.78);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  opacity: 0;
+  transition: 0.4s ease;
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+/* ---------- Overlay Buttons ---------- */
+
+.overlay-btn {
+  width: 56px;
+  height: 56px;
+  background: var(--orange-yellow-crayola);
+  color: var(--smoky-black);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: 24px;
+  transform: scale(0.8);
+  transition: 0.3s ease;
+}
+
+.project-card:hover .overlay-btn {
+  transform: scale(1);
+}
+
+.overlay-btn:hover {
+  transform: scale(1.15);
+}
+
+.overlay-btn ion-icon {
+  pointer-events: none;
+}
+
+/* ---------- Category Badge ---------- */
+
+.project-category {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  padding: 6px 14px;
+  background: var(--orange-yellow-crayola);
+  color: var(--smoky-black);
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  z-index: 2;
+}
+
+/* ---------- Content ---------- */
+
+.project-content {
+  padding: 22px;
+}
+
+.project-content h3 {
+  color: var(--white-2);
+  font-size: var(--fs-4);
+  margin-bottom: 12px;
+}
+
+.project-content p {
+  color: var(--light-gray);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+/* ---------- Technology Tags ---------- */
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.project-tech span {
+  padding: 6px 14px;
+  border-radius: 50px;
+  background: var(--jet);
+  color: var(--orange-yellow-crayola);
+  font-size: 13px;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.project-tech span:hover {
+  background: var(--orange-yellow-crayola);
+  color: var(--smoky-black);
+}
+
+/* ---------- Hidden Card (JS Filter) ---------- */
+
+.project-card.hide {
+  display: none;
+}
+
+/*===================================
         RESPONSIVE DESIGN
 ===================================*/
 
@@ -997,6 +1253,52 @@ article {
   .service-list {
     grid-template-columns: 1fr;
   }
+
+  /* ------------------------------------------project section or page --------------------------------------------------------- */
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* .project-image {
+    height: 250px;
+  } */
+
+  .project-filter {
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  .filter-btn {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+
+  .project-image {
+    height: 210px;
+  }
+
+  .project-content {
+    padding: 18px;
+  }
+
+  .project-content h3 {
+    font-size: 20px;
+  }
+
+  .project-content p {
+    font-size: 14px;
+  }
+
+  .project-tech span {
+    font-size: 12px;
+    padding: 5px 12px;
+  }
+
+  .overlay-btn {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+  }
 }
 
 /*--- MEDIUM MOBILE (Under 580px) ---------------------------------------------------------------------------*/
@@ -1033,6 +1335,23 @@ article {
     font-size: 13px;
 
     line-height: 1.7;
+  }
+
+  /* -----------------------Skills Section or page -------------------------------------------- */
+  .skills-container {
+    grid-template-columns: 1fr;
+  }
+
+  .skill-category {
+    padding: 20px;
+  }
+
+  .skill-category h3 {
+    font-size: 18px;
+  }
+
+  .skill span {
+    font-size: 14px;
   }
 }
 
