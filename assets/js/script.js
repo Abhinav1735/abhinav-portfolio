@@ -1,6 +1,18 @@
 "use strict";
 
 /*===================================
+        PRELOADER
+===================================*/
+
+window.addEventListener("load", () => {
+  const loader = document.querySelector(".loader-wrapper");
+
+  setTimeout(() => {
+    loader.classList.add("hide");
+  }, 1000);
+});
+
+/*===================================
         MORE CONTACT TOGGLE
 ===================================*/
 
@@ -105,6 +117,104 @@ filterButtons.forEach((button) => {
 });
 
 /*===================================
+        CONTACT FORM
+===================================*/
+
+const contactForm = document.getElementById("contact-form");
+const sendBtn = document.getElementById("send-btn");
+
+contactForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  sendBtn.disabled = true;
+
+  sendBtn.innerHTML = `
+        <ion-icon name="hourglass-outline"></ion-icon>
+        Sending...
+    `;
+
+  emailjs
+    .send("service_s1wawba", "template_0ptvhjc", {
+      from_name: document.getElementById("name").value,
+      from_email: document.getElementById("email").value,
+      subject: document.getElementById("subject").value,
+      message: document.getElementById("message").value,
+    })
+
+    .then(() => {
+      sendBtn.innerHTML = `
+            <ion-icon name="checkmark-circle-outline"></ion-icon>
+            Message Sent
+        `;
+
+      contactForm.reset();
+
+      showToast(
+        "success",
+        "Message Sent",
+        "Thank you! I'll get back to you as soon as possible.",
+      );
+
+      setTimeout(() => {
+        sendBtn.disabled = false;
+
+        sendBtn.innerHTML = `
+                <ion-icon name="send-outline"></ion-icon>
+                Send Message
+            `;
+      }, 2500);
+    })
+
+    .catch((error) => {
+      console.error(error);
+
+      sendBtn.disabled = false;
+
+      sendBtn.innerHTML = `
+            <ion-icon name="alert-circle-outline"></ion-icon>
+            Try Again
+        `;
+
+      showToast(
+        "error",
+        "Message Failed",
+        "Unable to send your message. Please try again.",
+      );
+    });
+});
+
+/*===================================
+            TOAST
+===================================*/
+
+const toast = document.getElementById("toast");
+const toastTitle = document.getElementById("toast-title");
+const toastMessage = document.getElementById("toast-message");
+const toastIcon = document.getElementById("toast-icon");
+
+function showToast(type, title, message) {
+  toast.classList.remove("error");
+
+  if (type === "success") {
+    toastIcon.setAttribute("name", "checkmark-circle");
+  } else {
+    toast.classList.add("error");
+
+    toastIcon.setAttribute("name", "close-circle");
+  }
+
+  toastTitle.textContent = title;
+
+  toastMessage.textContent = message;
+
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 3500);
+}
+
+/*===================================
         INITIAL LOAD
 ===================================*/
 
@@ -114,3 +224,37 @@ const activePage = document.querySelector("[data-page].active");
 if (activePage && activePage.dataset.page === "skills") {
   animateSkills();
 }
+
+/*===================================
+        SCROLL TOP
+===================================*/
+
+const scrollBtn = document.querySelector(".scroll-top");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 250) {
+    scrollBtn.classList.add("show");
+  } else {
+    scrollBtn.classList.remove("show");
+  }
+});
+
+scrollBtn.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+
+    behavior: "smooth",
+  });
+});
+
+/*===================================
+        CURSOR GLOW
+===================================*/
+
+const glow = document.querySelector(".cursor-glow");
+
+document.addEventListener("mousemove", (e) => {
+  glow.style.left = e.clientX + "px";
+
+  glow.style.top = e.clientY + "px";
+});
